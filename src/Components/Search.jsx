@@ -4,16 +4,35 @@ import { Link } from "react-router-dom";
 const Search = () => {
   const [searchNasa, setSearchNasa] = useState([]);
   const [query, setQuery] = useState('');
+  const [yearStart, setYearStart] = useState('');
+  const [yearEnd, setYearEnd] = useState('');
 
   useEffect(() => {
+    const url = new URL('https://images-api.nasa.gov/search?q=center&media_type=image');
+    const params = new URLSearchParams();
+
+    if (yearStart !== '' && yearStart.length === 4) {
+      params.set('year_start', yearStart);
+      url.search = params;
+    }else {
+      params.delete('year_start');
+    }
+
+    if (yearEnd !== '' && yearEnd.length === 4) {
+      params.set('year_end', yearEnd);
+      url.search = params;
+    }else {
+      params.delete('year_end');
+    }
   
-    fetch('https://images-api.nasa.gov/search?q=center&media_type=image&year_start=2011&year_end=2020')
+    fetch(url)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.collection.items);
         setSearchNasa(data.collection.items);
       });
-  },[]);
+     
+  },[yearEnd, yearStart]);
 
   return (
     <div className="container">
@@ -21,6 +40,16 @@ const Search = () => {
       <input type="search" placeholder="Search Nasa"
         onChange={(e) => setQuery(e.target.value)}
       />
+      </div>
+
+      <div>
+        <form>
+          <input type="text" name="yearStart" placeholder="filter by start year..."
+          onChange={(e) => setYearStart(e.target.value)} />
+          <input type="text" name="yearEnd" placeholder="filter by end year..."
+          onChange={(e) => setYearEnd(e.target.value)} /> 
+          {/* <button type="submit" onSubmit={handleYear}>filter</button> */}
+        </form>
       </div>
      
       <div className="searchDiv row">

@@ -16,10 +16,12 @@ const Search = () => {
 
   return (
     <div className="container">
-      <input type="text" placeholder="Search Nasa"
+      <form>
+      <input type="search" placeholder="Search Nasa"
         onChange={(e) => setQuery(e.target.value)}
       />
       <button>Search</button>
+      </form>
       <div className="searchDiv row">
         { searchNasa.filter((item) => {
           if (query === '') {

@@ -12,6 +12,8 @@ const Search = () => {
     const params = new URLSearchParams();
 
     if (yearStart !== '' && yearStart.length === 4) {
+      params.set('q', 'center');
+      params.set('media_type', 'image');
       params.set('year_start', yearStart);
       url.search = params;
     }else {
@@ -19,12 +21,14 @@ const Search = () => {
     }
 
     if (yearEnd !== '' && yearEnd.length === 4) {
+      params.set('q', 'center');
+      params.set('media_type', 'image');
       params.set('year_end', yearEnd);
       url.search = params;
     }else {
       params.delete('year_end');
     }
-  
+  console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

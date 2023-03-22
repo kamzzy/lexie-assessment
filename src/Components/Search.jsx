@@ -46,13 +46,12 @@ const Search = () => {
       />
       </div>
 
-      <div>
+      <div className="filterInput">
         <form>
           <input type="text" name="yearStart" placeholder="filter by start year..."
           onChange={(e) => setYearStart(e.target.value)} />
           <input type="text" name="yearEnd" placeholder="filter by end year..."
           onChange={(e) => setYearEnd(e.target.value)} /> 
-          {/* <button type="submit" onSubmit={handleYear}>filter</button> */}
         </form>
       </div>
      

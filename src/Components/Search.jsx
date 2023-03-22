@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 const Search = () => {
   const [searchNasa, setSearchNasa] = useState([]);
   const [query, setQuery] = useState('');
-  
+
   useEffect(() => {
+  
     fetch('https://images-api.nasa.gov/search?q=center&media_type=image&year_start=2011&year_end=2020')
       .then((res) => res.json())
       .then((data) => {
@@ -16,12 +17,14 @@ const Search = () => {
 
   return (
     <div className="container">
-      <form>
+      <div className="searchInput">
       <input type="search" placeholder="Search Nasa"
         onChange={(e) => setQuery(e.target.value)}
       />
       <button>Search</button>
-      </form>
+      
+      </div>
+     
       <div className="searchDiv row">
         { searchNasa.filter((item) => {
           if (query === '') {
@@ -31,15 +34,15 @@ const Search = () => {
           }else {
             return null;
           }
-        }).map((item, index) => (
-          <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 gridClass">
+        }).map((item) => (
+          <div key={item.data[0].nasa_id} className="col-12 col-sm-6 col-md-4 col-lg-3 gridClass">
             <img src={item.links[0].href} alt={item.data[0].title} className="searchImg" />
             <div className="searchDetails">
               <p><strong>Title:</strong> {item.data[0].title}</p>
               <p><strong>Photographer:</strong> {item.data[0].photographer}</p>
               <p><strong>Location:</strong> {item.data[0].location}</p>
               <span className="linkSpan">
-              <Link to={`/:${item.data[0].nasa_id}`} className="seeDetails">SEE DETAILS</Link>
+              <Link to={`/:${item.data[0].nasa_id}`} state={{item: [item]}} className="seeDetails">SEE DETAILS</Link>
               </span>
             </div>
           </div>

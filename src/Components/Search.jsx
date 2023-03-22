@@ -21,8 +21,6 @@ const Search = () => {
       <input type="search" placeholder="Search Nasa"
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button>Search</button>
-      
       </div>
      
       <div className="searchDiv row">

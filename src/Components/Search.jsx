@@ -16,7 +16,7 @@ const Search = () => {
       params.set('media_type', 'image');
       params.set('year_start', yearStart);
       url.search = params;
-    }else {
+    } else {
       params.delete('year_start');
     }
 
@@ -25,43 +25,44 @@ const Search = () => {
       params.set('media_type', 'image');
       params.set('year_end', yearEnd);
       url.search = params;
-    }else {
+    } else {
       params.delete('year_end');
     }
-  console.log(url);
+    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         console.log(data.collection.items);
         setSearchNasa(data.collection.items);
       });
-     
-  },[yearEnd, yearStart]);
+
+  }, [yearEnd, yearStart]);
 
   return (
     <div className="container">
-      <div className="searchInput">
-      <input type="search" placeholder="Search Nasa"
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      </div>
-
+      <form>
+        <div className="searchInput">
+          <input type="search" placeholder="Search Nasa"
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+      </form>
       <div className="filterInput">
         <form>
           <input type="text" name="yearStart" placeholder="filter by start year..."
-          onChange={(e) => setYearStart(e.target.value)} />
+            onChange={(e) => setYearStart(e.target.value)} />
           <input type="text" name="yearEnd" placeholder="filter by end year..."
-          onChange={(e) => setYearEnd(e.target.value)} /> 
+            onChange={(e) => setYearEnd(e.target.value)} />
         </form>
       </div>
-     
+
       <div className="searchDiv row">
-        { searchNasa.filter((item) => {
+        {searchNasa.filter((item) => {
           if (query === '') {
             return item;
           } else if (item.data[0].title.toLowerCase().includes(query.toLowerCase())) {
             return item;
-          }else {
+          } else {
             return null;
           }
         }).map((item) => (
@@ -72,7 +73,7 @@ const Search = () => {
               <p><strong>Photographer:</strong> {item.data[0].photographer}</p>
               <p><strong>Location:</strong> {item.data[0].location}</p>
               <span className="linkSpan">
-              <Link to={`/:${item.data[0].nasa_id}`} state={{item: [item]}} className="seeDetails">SEE DETAILS</Link>
+                <Link to={`/:${item.data[0].nasa_id}`} state={{ item: [item] }} className="seeDetails">SEE DETAILS</Link>
               </span>
             </div>
           </div>

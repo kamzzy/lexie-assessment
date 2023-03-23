@@ -10,9 +10,9 @@
 }
 .searchImg {
   width: 100%;
-  height: 120px;
+  height: 200px;
   border-radius: 15%;
-  padding: 12px;
+  padding: 24px 12px 12px 12px;
 }
 
 .searchDetails {
@@ -102,4 +102,20 @@ strong{
 .backArrow {
   font-size: 60px;
   color: blue;
+}
+
+@media screen and (max-width: 768px) {
+ .filterInput input {
+    display: flex;
+    justify-content: center;
+    margin: 5% 0; 
+  }
+
+  .filterInput {
+    margin: 5% 0; 
+  }
+
+  .searchDiv {
+    margin-top: 84px;
+  }
 }

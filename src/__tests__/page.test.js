@@ -5,9 +5,9 @@ import Search from "../Components/Search";
 import renderer from "react-test-renderer";
 
 
-describe("Search component", () => { 
+describe("Search component", () => {
 
-  test ('matches snapshot', () => {
+  test('matches snapshot', () => {
     const tree = renderer.create(<Search />).toJSON();
     expect(tree).toMatchSnapshot();
   });

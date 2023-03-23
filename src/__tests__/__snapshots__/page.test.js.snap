@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component Ensure the search componenet renders as expected 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <form>
+      <div
+        class="searchInput"
+      >
+        <input
+          placeholder="Search Nasa Images..."
+          type="search"
+        />
+      </div>
+    </form>
+    <div
+      class="filterInput"
+    >
+      <form>
+        <input
+          name="yearStart"
+          placeholder="filter by start year..."
+          type="text"
+        />
+        <input
+          name="yearEnd"
+          placeholder="filter by end year..."
+          type="text"
+        />
+      </form>
+    </div>
+    <div
+      class="searchDiv row"
+    />
+  </div>
+</div>
+`;
+
+exports[`Search component matches snapshot 1`] = `
+<div
+  className="container"
+>
+  <form>
+    <div
+      className="searchInput"
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Search Nasa Images..."
+        type="search"
+      />
+    </div>
+  </form>
+  <div
+    className="filterInput"
+  >
+    <form>
+      <input
+        name="yearStart"
+        onChange={[Function]}
+        placeholder="filter by start year..."
+        type="text"
+      />
+      <input
+        name="yearEnd"
+        onChange={[Function]}
+        placeholder="filter by end year..."
+        type="text"
+      />
+    </form>
+  </div>
+  <div
+    className="searchDiv row"
+  />
+</div>
+`;

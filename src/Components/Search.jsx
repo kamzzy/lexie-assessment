@@ -42,7 +42,7 @@ const Search = () => {
     <div className="container">
       <form>
         <div className="searchInput">
-          <input type="search" placeholder="Search Nasa"
+          <input type="search" placeholder="Search Nasa Images..."
             onChange={(e) => setQuery(e.target.value)}
           />
         </div>
